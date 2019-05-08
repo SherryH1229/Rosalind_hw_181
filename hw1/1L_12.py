@@ -1,0 +1,26 @@
+def lastSymbol(pattern):
+    lastSymbol = pattern[-1:]
+    return lastSymbol
+def prefix(pattern):
+    prefix = pattern[0:-1]
+    return prefix
+
+def symbolToPattern(symbol):
+    if symbol == 'A':
+        value = 0 
+    elif symbol == 'C':
+        value = 1
+    elif symbol == 'G':
+        value = 2
+    else:
+        value = 3
+    
+    return value
+def patternToNum(pattern):
+    if not pattern:
+        return 0
+    symbol = lastSymbol(pattern)
+    prefixChar = prefix(pattern)
+    return 4*patternToNum(prefixChar)+symbolToPattern(symbol)
+
+print (patternToNum("TATGAGATTTAAAATGTACACGTT"))
